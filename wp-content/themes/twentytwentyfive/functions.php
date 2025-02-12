@@ -156,3 +156,20 @@ if ( ! function_exists( 'twentytwentyfive_format_binding' ) ) :
 		}
 	}
 endif;
+
+function artistudio_popup() {
+    ?>
+    <div id="popup-container"></div> <!-- Tempat menampilkan popup -->
+    <?php
+}
+add_action('wp_footer', 'artistudio_popup'); // Memastikan popup muncul di footer
+
+function artistudio_enqueue_scripts() {
+    wp_enqueue_script('artistudio-popup', plugin_dir_url(__FILE__) . 'assets/js/index.js', [], '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'artistudio_enqueue_scripts');
+
+function artistudio_enqueue_styles() {
+    wp_enqueue_style('artistudio-popup-style', plugin_dir_url(__FILE__) . 'assets/css/style.css');
+}
+add_action('wp_enqueue_scripts', 'artistudio_enqueue_styles');
